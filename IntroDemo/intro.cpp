@@ -118,7 +118,7 @@ bool Intro_Init()
 	debug_register_bitmap(gImageBpls, "ImageBpls", kImageWidth, kImageHeight, kImagePlanes, 0);
 	debug_register_palette(gPalettes, "Palette", kPaletteSize, 0);
 
-	//LSP_MusicDriver_CIA_Start(gLSPMusic, gLSPBank);
+	LSP_MusicDriver_CIA_Start(gLSPMusic, gLSPBank);
 	System_SetAudioFilter(false);
 
 	// Wait for the top of the frame and prepare to start.
