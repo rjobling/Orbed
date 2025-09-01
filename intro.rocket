@@ -1,0 +1,52 @@
+<sync rows="128">
+	<tracks>
+		<track name="Intro:scroll">
+			<key value="0" row="0" interpolation="2"/>
+			<key value="16" row="8" interpolation="2"/>
+			<key value="32" row="16" interpolation="2"/>
+			<key value="48" row="24" interpolation="2"/>
+			<key value="64" row="32" interpolation="2"/>
+			<key value="48" row="40" interpolation="2"/>
+			<key value="32" row="48" interpolation="2"/>
+			<key value="16" row="56" interpolation="2"/>
+			<key value="0" row="64" interpolation="1"/>
+			<key value="16" row="72" interpolation="1"/>
+			<key value="32" row="80" interpolation="1"/>
+			<key value="48" row="88" interpolation="1"/>
+			<key value="64" row="96" interpolation="1"/>
+			<key value="48" row="104" interpolation="1"/>
+			<key value="32" row="112" interpolation="1"/>
+			<key value="16" row="120" interpolation="1"/>
+			<key value="0" row="127" interpolation="0"/>
+		</track>
+		<track name="Intro:palIndex">
+			<key value="0" row="0" interpolation="1"/>
+			<key value="10" row="8" interpolation="1"/>
+			<key value="20" row="16" interpolation="1"/>
+			<key value="30" row="24" interpolation="1"/>
+			<key value="40" row="32" interpolation="1"/>
+			<key value="50" row="40" interpolation="1"/>
+			<key value="60" row="48" interpolation="1"/>
+			<key value="70" row="56" interpolation="1"/>
+			<key value="80" row="64" interpolation="1"/>
+			<key value="70" row="72" interpolation="1"/>
+			<key value="60" row="80" interpolation="1"/>
+			<key value="50" row="88" interpolation="1"/>
+			<key value="40" row="96" interpolation="1"/>
+			<key value="30" row="104" interpolation="1"/>
+			<key value="20" row="112" interpolation="1"/>
+			<key value="10" row="120" interpolation="1"/>
+			<key value="0" row="127" interpolation="0"/>
+		</track>
+		<track name="Intro:midHpos">
+			<key value="4" row="0" interpolation="0"/>
+			<key value="4" row="127" interpolation="0"/>
+		</track>
+		<track name="Intro:midVPos">
+			<key value="236" row="0" interpolation="2"/>
+			<key value="255" row="64" interpolation="0"/>
+			<key value="236" row="127" interpolation="0"/>
+		</track>
+	</tracks>
+	<bookmarks/>
+</sync>
