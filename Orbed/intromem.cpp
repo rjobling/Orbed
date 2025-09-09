@@ -47,6 +47,15 @@ struct CopList
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
+struct Intro_Chip
+{
+	OrbedTag tag;
+
+	CopList copList;
+};
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 struct Intro_Data
 {
 	OrbedTag tag;
@@ -57,15 +66,6 @@ struct Intro_Data
 
 	big_s16 scroll;
 	big_s16 palIndex;
-};
-
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-struct Intro_Chip
-{
-	OrbedTag tag;
-
-	CopList copList;
 };
 
 #pragma pack(pop)
@@ -83,8 +83,8 @@ struct Host_Data
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-static WinUAEMem sDataMem = {};
 static WinUAEMem sChipMem = {};
+static WinUAEMem sDataMem = {};
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -99,14 +99,14 @@ bool IntroMem_Aquire()
 		return true;
 	}
 
-	if (!WinUAEMem_Aquire(sDataMem, "IntrData"))
+	if (!WinUAEMem_Aquire(sChipMem, "IntrChip"))
 	{
 		return false;
 	}
 
-	if (!WinUAEMem_Aquire(sChipMem, "IntrChip"))
+	if (!WinUAEMem_Aquire(sDataMem, "IntrData"))
 	{
-		WinUAEMem_Release(sDataMem);
+		WinUAEMem_Release(sChipMem);
 
 		return false;
 	}
@@ -133,8 +133,8 @@ void IntroMem_Release()
 	Rocket_Unregister(&sHostData.midHpos);
 	Rocket_Unregister(&sHostData.midVpos);
 
-	WinUAEMem_Release(sDataMem);
 	WinUAEMem_Release(sChipMem);
+	WinUAEMem_Release(sDataMem);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -146,11 +146,11 @@ bool IntroMem_Update()
 		return false;
 	}
 
-	Intro_Data& data = (Intro_Data&) *sDataMem.tag;
 	Intro_Chip& chip = (Intro_Chip&) *sChipMem.tag;
+	Intro_Data& data = (Intro_Data&) *sDataMem.tag;
 
-	bool connected = WinUAEMem_Read(sDataMem, &data, sizeof(Intro_Data)) &&
-					 WinUAEMem_Read(sChipMem, &chip, sizeof(Intro_Chip));
+	bool connected = WinUAEMem_Read(sChipMem, &chip, sizeof(Intro_Chip)) &&
+					 WinUAEMem_Read(sDataMem, &data, sizeof(Intro_Data));
 
 	ImGui::Text("Intro");
 
