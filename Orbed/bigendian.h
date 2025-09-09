@@ -170,3 +170,8 @@ struct big_u32
 	bool operator>=(big_u32 b) const { return (swap_endian(value) >= swap_endian(b.value)); }
 	bool operator<=(big_u32 b) const { return (swap_endian(value) <= swap_endian(b.value)); }
 };
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+typedef big_u32 big_size32;
+typedef big_s32 big_p32;

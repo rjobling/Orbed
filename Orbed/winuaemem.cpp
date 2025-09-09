@@ -108,7 +108,7 @@ bool WinUAEMem_Aquire(WinUAEMem& mem, const char* label)
 
 		if (ReadProcessMemory(proc, base, buffer, size, nullptr))
 		{
-			Mem_Tag* tag = (Mem_Tag*) FindLabel(label, length, (char*) buffer, size);
+			OrbedTag* tag = (OrbedTag*) FindLabel(label, length, (char*) buffer, size);
 
 			if (tag != nullptr)
 			{
@@ -172,7 +172,7 @@ bool WinUAEMem_Write(WinUAEMem& mem, const void* p, size_t size)
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-void* WinUAEMem_MakeHostPointer(WinUAEMem& mem, uae_ptr tp)
+void* WinUAEMem_MakeHostPointer(WinUAEMem& mem, big_p32 tp)
 {
 	assert_pointer(mem.proc);
 
@@ -187,14 +187,14 @@ void* WinUAEMem_MakeHostPointer(WinUAEMem& mem, uae_ptr tp)
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-uae_ptr WinUAEMem_MakeTargetPointer(WinUAEMem& mem, void* hp)
+big_p32 WinUAEMem_MakeTargetPointer(WinUAEMem& mem, void* hp)
 {
 	assert_pointer(mem.proc);
 	assert((hp >= mem.buffer) && (hp < (mem.buffer + mem.size)));
 
 	int offset = (int) (((u8*) hp) - ((u8*) mem.tag));
 
-	uae_ptr tp = (uae_ptr) (((int) mem.tag->self) + offset);
+	big_p32 tp = (big_p32) (((int) mem.tag->self) + offset);
 
 	return tp;
 }

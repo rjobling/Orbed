@@ -49,8 +49,7 @@ struct CopList
 ////////////////////////////////////////////////////////////////////////////////
 struct Intro_Data
 {
-	big_u32 label[2];
-	uae_ptr self;
+	OrbedTag tag;
 
 	bool pause;
 
@@ -64,8 +63,7 @@ struct Intro_Data
 ////////////////////////////////////////////////////////////////////////////////
 struct Intro_Chip
 {
-	big_u32 label[2];
-	uae_ptr self;
+	OrbedTag tag;
 
 	CopList copList;
 };

@@ -10,6 +10,7 @@
 #include "framework/core.h"
 #include "framework/customhelpers.h"
 #include "framework/lsp.h"
+#include "framework/orbed.h"
 #include "framework/system.h"
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -71,8 +72,7 @@ struct CopList
 ////////////////////////////////////////////////////////////////////////////////
 struct Intro_Chip
 {
-	u32 label[2] = {'Intr', 'Chip'};
-	void* self;
+	OrbedTag tag = {'Intr', 'Chip', this};
 
 	CopList copList;
 };
@@ -81,8 +81,7 @@ struct Intro_Chip
 ////////////////////////////////////////////////////////////////////////////////
 struct Intro_Data
 {
-	u32 label[2] = {'Intr', 'Data'};
-	void* self;
+	OrbedTag tag = {'Intr', 'Data', this};
 
 	bool pause = false;
 
@@ -101,9 +100,6 @@ static Intro_Data sData;
 ////////////////////////////////////////////////////////////////////////////////
 bool Intro_Init()
 {
-	sChip.self = &sChip;
-	sData.self = &sData;
-
 	custom.bplcon0 = PackBplcon0(kImagePlanes);
 	custom.bplcon1 = PackBplcon1(0, 0);
 	custom.bplcon2 = PackBplcon2(false, 4, 4);
